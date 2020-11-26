@@ -7,9 +7,10 @@ function sendPrint(text) {
     })
     .then(function() {
         console.log("Document successfully written!");
+        return true;
     })
     .catch(function(error) {
         console.error("Error writing document: ", error);
+        return false;
     });
-    return false;
 }

@@ -18,7 +18,7 @@
     <script defer src="lib/js/index.js"></script>
 
     <h1>Send me a message!</h1>
-    <form action="" onsubmit="sendPrint(document.getElementById('requestText').value)" >
+    <form onsubmit="return sendPrint(document.getElementById('requestText').value)" >
       <input type="text" id="requestText">
       <input type="submit">
     </form>
