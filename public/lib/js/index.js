@@ -11,4 +11,5 @@ function sendPrint(text) {
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
+    return false;
 }
