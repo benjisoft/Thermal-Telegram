@@ -15,10 +15,12 @@
     <script defer src="/__/firebase/8.1.1/firebase-performance.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+    <script src="lib/js/index.js"
 
     <h1>Send me a message!</h1>
     <form>
-      <input type="text">
+      <input type="text" id="text">
+      <input type="submit" onclick="sendPrint(document.getElementById('text').value)">
     </form>
   </body>
 </html>
