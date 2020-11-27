@@ -18,7 +18,7 @@ callback_done = threading.Event()
 
 # Define printing function
 def tPrint(printing):
-    command = './print.sh ' + str(printing)
+    command = './print.sh "' + str(printing) + '"'
     os.system(command)
     return True
 
