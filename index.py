@@ -9,7 +9,9 @@ import time
 cred = credentials.Certificate('serviceAccount.json')
 firebase_admin.initialize_app(cred)
 
+# Initialise Firebase variables
 db = firestore.client()
+doc_ref = db.collection(u'requests')
 
 # Create an Event for notifying main thread.
 callback_done = threading.Event()
@@ -25,13 +27,11 @@ def on_snapshot(doc_snapshot, changes, read_time):
     for change in changes:
         item = change.document.to_dict()
         if (change.type.name == "ADDED" and item["printed"] == False):
-            tPrint({item["text"]})
+            tPrint(item["text"])
             db.collection(u'requests').document(change.document.id).set({
                 u'printed': True
             }, merge=True)
     callback_done.set()
-
-doc_ref = db.collection(u'requests')
 
 # Watch the document
 doc_watch = doc_ref.on_snapshot(on_snapshot)
