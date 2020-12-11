@@ -27,7 +27,10 @@ def on_snapshot(doc_snapshot, changes, read_time):
     for change in changes:
         item = change.document.to_dict()
         if (change.type.name == "ADDED" and item["printed"] == False):
-            tPrint(item["text"])
+            if '"' in item["text"]:
+                print("Fraudulent Code Execution Attempted")
+            else:
+                tPrint(item["text"])
             db.collection(u'requests').document(change.document.id).set({
                 u'printed': True
             }, merge=True)
